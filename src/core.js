@@ -69,7 +69,7 @@ class Kuroshiro {
      * @param {string} [options.delimiter_end=")"] Delimiter(End)
      * @returns {Promise} Promise object represents the result of conversion
      */
-    async convert(str, options) {
+    convert(str, options) {
         options = options || {};
         options.to = options.to || "hiragana";
         options.mode = options.mode || "normal";
@@ -91,7 +91,7 @@ class Kuroshiro {
             throw new Error("Invalid Romanization System.");
         }
 
-        const rawTokens = await this._analyzer.parse(str);
+        const rawTokens = this._analyzer.parse(str);
         const tokens = patchTokens(rawTokens);
 
         if (options.mode === "normal" || options.mode === "spaced") {
